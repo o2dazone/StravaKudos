@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+
+  "name": "Strava Kudos",
+  "description": "Auto-Kudos activities",
+  "version": "0.1",
+
+  "permissions": [
+  ],
+
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+
+  "web_accessible_resources": [
+    "styles.css", "styles.css?*"
+  ],
+
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.strava.com/dashboard/*","https://www.strava.com/athletes/*"],
+      "js": ["./index.js"]
+    }
+  ]
+}
