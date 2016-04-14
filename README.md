@@ -5,4 +5,4 @@ StravaKudos is a Chrome Extension that auto-kudos peoples activities.
 Clone this repo down to your machine. Navigate to your Chrome Extensions window, and click "Developer Mode". Load an unpacked extension, and point it to the cloned down repo. (This currently pops up a "Disable Developer Mode" box, ill eventually publish it in the chrome webstore)
 
 # Building
-Cd into the strava_kudos/src and run 'npm install'. After that, run 'gulp' and it will compile your assets in the proper locations. (inside the chrome-extension directory)
+Cd into the strava_kudos/src and run 'npm i && npm run server'.
