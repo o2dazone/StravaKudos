@@ -6,7 +6,7 @@ document.querySelector('head').innerHTML += '<link rel="stylesheet" type="text/c
 var kudosBox = null, kudosBtns;
 
 function init() {
-  kudosBtns = document.querySelectorAll('.activity .js-add-kudo');
+  kudosBtns = document.querySelectorAll('.activity .js-add-kudo, .group-activity .js-add-kudo');
 
   if ((kudosBox = document.getElementById('stravaKudos'))) {
     kudosBox.parentNode.removeChild(kudosBox);
