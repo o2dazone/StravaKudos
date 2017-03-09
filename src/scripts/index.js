@@ -3,7 +3,7 @@
 var path = chrome.extension.getURL('styles.css');
 document.querySelector('head').innerHTML += '<link rel="stylesheet" type="text/css" href="' + path + '" />';
 
-var kudosBox = null, kudosBtns;
+var kudosBox = null, kudosBtns, initInterval;
 
 function init() {
   kudosBtns = document.querySelectorAll('.activity .js-add-kudo, .group-activity .js-add-kudo');
@@ -16,20 +16,29 @@ function init() {
     var box = document.createElement('div');
     box.id = 'stravaKudos';
 
-    var btn = document.createElement('span');
-    btn.innerHTML = 'Yup!';
-    btn.onclick = function() {
+    var yup = document.createElement('span');
+    yup.innerHTML = 'Yup!';
+    yup.onclick = function() {
       box.parentNode.removeChild(box);
 
       for (var i = 0; i < kudosBtns.length; i++) {
         kudosBtns[i].click();
       }
     }
+    
+    var cancel = document.createElement('span');
+    cancel.innerHTML = 'Nah.';
+    cancel.onclick = function() {
+      box.parentNode.removeChild(box);
+    }
+    
     box.innerHTML = 'There are ' + kudosBtns.length + ' activities that you havent Kudos\'d, would you like to?';
-    box.appendChild(btn);
+    box.appendChild(yup);
+    box.appendChild(cancel);
 
-    document.body.appendChild(box);;
+    document.body.appendChild(box);
+    clearInterval(initInterval);
   }
 }
 
-setInterval(init, 2500);
+initInterval = setInterval(init, 2500);
