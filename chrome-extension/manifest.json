@@ -24,7 +24,7 @@
 
   "content_scripts": [
     {
-      "matches": ["https://www.strava.com/dashboard/*","https://www.strava.com/athletes/*"],
+      "matches": ["https://www.strava.com/dashboard*","https://www.strava.com/athletes/*"],
       "js": ["./index.js"]
     }
   ]
