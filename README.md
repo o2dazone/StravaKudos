@@ -6,3 +6,7 @@ Clone this repo down to your machine. Navigate to your Chrome Extensions window,
 
 # Building
 Cd into the strava_kudos/src and run 'npm i && npm run server'.
+
+# Chrome Web Store Extension
+
+You can just add it from the [Chrome Web Store](https://chrome.google.com/webstore/detail/strava-kudos/fmgpfcolhjopnnbklpambicfacbbhbac)
