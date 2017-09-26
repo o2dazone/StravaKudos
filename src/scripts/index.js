@@ -1,35 +1,47 @@
-'use strict';
-
-var path = chrome.extension.getURL('styles.css');
-document.querySelector('head').innerHTML += '<link rel="stylesheet" type="text/css" href="' + path + '" />';
-
-var kudosBox = null, kudosBtns;
+let kudosBtns;
 
 function init() {
-  kudosBtns = document.querySelectorAll('.activity .js-add-kudo, .group-activity .js-add-kudo');
+  const insertContainer = document.querySelector('#sidebar-footer') || document.querySelector('.club-members');
+  if (!insertContainer) return;
 
-  if ((kudosBox = document.getElementById('stravaKudos'))) {
-    kudosBox.parentNode.removeChild(kudosBox);
+  // create container
+  const box = document.createElement('div');
+  box.id = 'stravaKudos';
+  box.className = 'section';
+  box.innerHTML = '<h3>Give Kudos!</h3>There are <span id="stravaKudosCount"></span> activities that you havent Kudos\'d, would you like to?';
+
+  // create button
+  const btn = document.createElement('a');
+  btn.innerHTML = 'Give Kudos';
+  btn.href = '#';
+  btn.onclick = function(e) {
+    e.preventDefault();
+    giveKudos();
   }
 
-  if (kudosBtns.length) {
-    var box = document.createElement('div');
-    box.id = 'stravaKudos';
+  box.appendChild(btn);
 
-    var btn = document.createElement('span');
-    btn.innerHTML = 'Yup!';
-    btn.onclick = function() {
-      box.parentNode.removeChild(box);
+  insertContainer.parentNode.insertBefore(box, insertContainer.previousSibling);
 
-      for (var i = 0; i < kudosBtns.length; i++) {
-        kudosBtns[i].click();
-      }
-    }
-    box.innerHTML = 'There are ' + kudosBtns.length + ' activities that you havent Kudos\'d, would you like to?';
-    box.appendChild(btn);
+  updateCountNum();
+}
 
-    document.body.appendChild(box);;
+// give all the kudos
+function giveKudos() {
+  for (let i = 0; i < kudosBtns.length; i++) {
+    kudosBtns[i].click();
   }
 }
 
-setInterval(init, 2500);
+// publish number of kudos
+function updateCountNum() {
+  const count = document.getElementById('stravaKudosCount');
+  if (count) {
+    setInterval(() => {
+      kudosBtns = document.querySelectorAll('.activity .js-add-kudo, .group-activity .js-add-kudo');
+      count.innerHTML = kudosBtns.length;
+    }, 1000);
+  }
+}
+
+init();

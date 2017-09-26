@@ -3,18 +3,11 @@
 
   "name": "Strava Kudos",
   "description": "Auto-Kudos activities",
-  "version": "0.1",
-
-  "permissions": [
-  ],
+  "version": "0.2",
 
   "browser_action": {
     "default_icon": "icon.png"
   },
-
-  "web_accessible_resources": [
-    "styles.css", "styles.css?*"
-  ],
 
   "icons": {
     "16": "icon.png",
@@ -24,8 +17,9 @@
 
   "content_scripts": [
     {
-      "matches": ["https://www.strava.com/dashboard*","https://www.strava.com/athletes/*"],
-      "js": ["./index.js"]
+      "matches": ["https://www.strava.com/dashboard*","https://www.strava.com/athletes/*","https://www.strava.com/clubs/*"],
+      "js": ["./index-min.js"],
+      "css": ["./styles.css"]
     }
   ]
 }
