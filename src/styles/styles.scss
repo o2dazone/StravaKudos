@@ -1,8 +1,27 @@
 $strava-orange: #FC4C02;
 #stravaKudos {
+  left: 5px;
+  background: white;
+  width: 457px;
+  z-index: 50;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 2px 1px rgba(0,0,0,.2);
+  position: fixed;
+  top: 61px;
+
+  * {
+    line-height: 0.6;
+  }
+
   a {
     display: block;
     color: $strava-orange;
     margin-top: 10px;
+  }
+
+  &.hidden {
+    display: none !important;
+    visibility: hidden !important;
   }
 }

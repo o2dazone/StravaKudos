@@ -2,3 +2,6 @@ node_modules
 .DS_Store
 .sass-cache
 npm-debug.log
+chrome-extension/*.zip
+chrome-extension/*.js
+chrome-extension/*.css

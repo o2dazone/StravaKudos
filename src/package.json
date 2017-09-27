@@ -1,9 +1,9 @@
 {
   "name": "strava_kudos",
-  "verson": "0.0.1",
+  "verson": "0.0.3",
   "scripts": {
     "server": "gulp watch",
-    "build": "gulp"
+    "build": "cd ../chrome-extension && zip -j StravaKudos.zip index-min.js icon.png manifest.json styles.css"
   },
   "devDependencies": {
     "gulp": "^3.8.7",

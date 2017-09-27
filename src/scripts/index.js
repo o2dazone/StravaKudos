@@ -1,17 +1,17 @@
-let kudosBtns;
+let kudosBtns = [], box, d = document;
 
 function init() {
-  const insertContainer = document.querySelector('#sidebar-footer') || document.querySelector('.club-members');
+  const insertContainer = d.querySelector('#sidebar-footer') || d.querySelector('.club-members');
   if (!insertContainer) return;
 
   // create container
-  const box = document.createElement('div');
+  box = d.createElement('div');
   box.id = 'stravaKudos';
   box.className = 'section';
   box.innerHTML = '<h3>Give Kudos!</h3>There are <span id="stravaKudosCount"></span> activities that you havent Kudos\'d, would you like to?';
 
   // create button
-  const btn = document.createElement('a');
+  const btn = d.createElement('a');
   btn.innerHTML = 'Give Kudos';
   btn.href = '#';
   btn.onclick = function(e) {
@@ -33,13 +33,22 @@ function giveKudos() {
   }
 }
 
+function toggleKudosBox() {
+  if (kudosBtns.length) {
+    box.classList.remove('hidden');
+  } else {
+    box.classList.add('hidden');
+  }
+}
+
 // publish number of kudos
 function updateCountNum() {
-  const count = document.getElementById('stravaKudosCount');
+  const count = d.getElementById('stravaKudosCount');
   if (count) {
     setInterval(() => {
-      kudosBtns = document.querySelectorAll('.activity .js-add-kudo, .group-activity .js-add-kudo');
+      kudosBtns = d.querySelectorAll('.activity .js-add-kudo, .group-activity .js-add-kudo');
       count.innerHTML = kudosBtns.length;
+      toggleKudosBox();
     }, 1000);
   }
 }
