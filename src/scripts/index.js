@@ -1,9 +1,6 @@
 let kudosBtns = [], box, d = document;
 
 function init() {
-  const insertContainer = d.querySelector('#sidebar-footer') || d.querySelector('.club-members');
-  if (!insertContainer) return;
-
   // create container
   box = d.createElement('div');
   box.id = 'stravaKudos';
@@ -20,8 +17,7 @@ function init() {
   }
 
   box.appendChild(btn);
-
-  insertContainer.parentNode.insertBefore(box, insertContainer.previousSibling);
+  d.body.appendChild(box);
 
   updateCountNum();
 }

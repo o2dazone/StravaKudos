@@ -32,12 +32,6 @@ module.exports = {
 		cache: true,
 		output: {
 			filename: 'index.js'
-		},
-		resolve: {
-			modulesDirectories: ['node_modules']
-		},
-		resolveLoader: {
-			modulesDirectories: ['node_modules']
 		}
 	},
 	connect: {

@@ -12,7 +12,7 @@ var sassOpts = {
 var exec = require('child_process').exec;
 
 // Tasks
-gulp.task('default', ['scripts']);
+gulp.task('default', ['scripts', 'sass']);
 
 gulp.task('scripts', function() {
 	return gulp.src(gulpConfig.scripts.paths.entry)
