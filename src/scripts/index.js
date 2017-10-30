@@ -1,24 +1,17 @@
-let kudosBtns = [], box, d = document;
+let kudosBtns = [], btn, d = document;
 
 function init() {
-  // create container
-  box = d.createElement('div');
-  box.id = 'stravaKudos';
-  box.className = 'section';
-  box.innerHTML = '<h3>Give Kudos!</h3>There are <span id="stravaKudosCount"></span> activities that you havent Kudos\'d, would you like to?';
-
   // create button
-  const btn = d.createElement('a');
-  btn.innerHTML = 'Give Kudos';
-  btn.href = '#';
+  btn = d.createElement('button');
+  btn.id = 'stravaKudos';
+  btn.innerHTML = 'Give <span id="stravaKudosCount"></span> Auto-Kudos';
+  btn.className = 'btn btn-sm btn-primary hidden';
   btn.onclick = function(e) {
     e.preventDefault();
     giveKudos();
   }
 
-  box.appendChild(btn);
-  d.body.appendChild(box);
-
+  d.body.appendChild(btn);
   updateCountNum();
 }
 
@@ -31,15 +24,16 @@ function giveKudos() {
 
 function toggleKudosBox() {
   if (kudosBtns.length) {
-    box.classList.remove('hidden');
+    btn.classList.remove('hidden');
   } else {
-    box.classList.add('hidden');
+    btn.classList.add('hidden');
   }
 }
 
 // publish number of kudos
 function updateCountNum() {
   const count = d.getElementById('stravaKudosCount');
+
   if (count) {
     setInterval(() => {
       kudosBtns = d.querySelectorAll('.activity .js-add-kudo, .group-activity .js-add-kudo');
