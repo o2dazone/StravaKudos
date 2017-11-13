@@ -3,12 +3,11 @@
 
   "name": "Strava Kudos",
   "description": "Auto-Kudos activities",
-  "version": "0.5",
+  "version": "0.6",
 
   "browser_action": {
     "default_icon": "icon.png"
   },
-
   "icons": {
     "16": "icon.png",
     "48": "icon.png",
@@ -18,8 +17,7 @@
   "content_scripts": [
     {
       "matches": ["https://www.strava.com/dashboard*","https://www.strava.com/athletes/*","https://www.strava.com/clubs/*"],
-      "js": ["./index-min.js"],
-      "css": ["./styles.css"]
+      "js": ["./index.js"]
     }
   ]
 }

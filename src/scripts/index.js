@@ -2,10 +2,16 @@ let kudosBtns = [], btn, d = document;
 
 function init() {
   // create button
+
+  styles = d.createElement('style');
+  styles.innerHTML = '#stravaKudos{left:5px;font-size:20px;box-shadow:0 2px 1px rgba(0,0,0,0.2);z-index:49;position:fixed;top:61px}#stravaKudos.hidden{display:none !important;visibility:hidden !important}#stravaKudosCount{font-weight:bold}';
+  d.head.appendChild(styles);
+
   btn = d.createElement('button');
   btn.id = 'stravaKudos';
   btn.innerHTML = 'Give <span id="stravaKudosCount"></span> Auto-Kudos';
   btn.className = 'btn btn-sm btn-primary hidden';
+
   btn.onclick = function(e) {
     e.preventDefault();
     giveKudos();
