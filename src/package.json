@@ -3,7 +3,7 @@
   "verson": "0.0.3",
   "scripts": {
     "server": "gulp watch",
-    "build": "cd ../chrome-extension && zip -j StravaKudos.zip index-min.js icon.png manifest.json styles.css"
+    "build": "cd ../chrome-extension && zip -j StravaKudos.zip index.js icon.png manifest.json"
   },
   "devDependencies": {
     "gulp": "^3.8.7",

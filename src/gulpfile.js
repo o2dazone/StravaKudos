@@ -17,7 +17,7 @@ gulp.task('default', ['scripts', 'sass']);
 gulp.task('scripts', function() {
 	return gulp.src(gulpConfig.scripts.paths.entry)
 		.pipe(webpack(gulpConfig.webpack))
-    .pipe(minify({ noSource: true }))
+    .pipe(minify({ noSource: true, ext: { min: '.js' }}))
 		.pipe(connect.reload())
 		.pipe(gulp.dest(gulpConfig.scripts.paths.output.prod));
 });
