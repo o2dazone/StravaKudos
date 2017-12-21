@@ -23,7 +23,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('refresh_extension', function(){
-  exec("open http://reload.extensions", null);
+  exec('open http://reload.extensions', null);
 });
 
 gulp.task('sass', function() {

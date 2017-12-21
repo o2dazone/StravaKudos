@@ -21,11 +21,16 @@ function init() {
   updateCountNum();
 }
 
+
 // give all the kudos
 function giveKudos() {
-  for (let i = 0; i < kudosBtns.length; i++) {
-    kudosBtns[i].click();
-  }
+  setTimeout(() => {
+    const kudoBtn = d.querySelector('.activity button.js-add-kudo, .group-activity button.js-add-kudo');
+    if(kudoBtn) {
+      kudoBtn.click();
+      giveKudos();
+    }
+  }, 500);
 }
 
 function toggleKudosBox() {
@@ -42,10 +47,10 @@ function updateCountNum() {
 
   if (count) {
     setInterval(() => {
-      kudosBtns = d.querySelectorAll('.activity .js-add-kudo, .group-activity .js-add-kudo');
+      kudosBtns = d.querySelectorAll('.activity button.js-add-kudo, .group-activity button.js-add-kudo');
       count.innerHTML = kudosBtns.length;
       toggleKudosBox();
-    }, 1000);
+    }, 500);
   }
 }
 
