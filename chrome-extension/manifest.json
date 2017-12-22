@@ -14,6 +14,8 @@
     "128": "icon.png"
   },
 
+  "update_url": "https://clients2.google.com/service/update2/crx",
+
   "content_scripts": [
     {
       "matches": ["https://www.strava.com/dashboard*","https://www.strava.com/athletes/*","https://www.strava.com/clubs/*"],
