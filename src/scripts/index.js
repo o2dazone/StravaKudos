@@ -30,7 +30,7 @@ function giveKudos() {
       kudoBtn.click();
       giveKudos();
     }
-  }, 500);
+  }, 1000);
 }
 
 function toggleKudosBox() {
@@ -50,7 +50,7 @@ function updateCountNum() {
       kudosBtns = d.querySelectorAll('.activity button.js-add-kudo, .group-activity button.js-add-kudo');
       count.innerHTML = kudosBtns.length;
       toggleKudosBox();
-    }, 500);
+    }, 1000);
   }
 }
 
