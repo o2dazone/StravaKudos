@@ -1,4 +1,7 @@
-let kudosBtns = [], btn, d = document;
+let kudosBtns = []
+  , KUDOS_INTERVAL = 1000 // in ms
+  , btn
+  , d = document;
 
 function init() {
   // create button
@@ -21,7 +24,6 @@ function init() {
   updateCountNum();
 }
 
-
 // give all the kudos
 function giveKudos() {
   setTimeout(() => {
@@ -30,7 +32,7 @@ function giveKudos() {
       kudoBtn.click();
       giveKudos();
     }
-  }, 1000);
+  }, KUDOS_INTERVAL);
 }
 
 function toggleKudosBox() {
@@ -50,7 +52,7 @@ function updateCountNum() {
       kudosBtns = d.querySelectorAll('.activity button.js-add-kudo, .group-activity button.js-add-kudo');
       count.innerHTML = kudosBtns.length;
       toggleKudosBox();
-    }, 1000);
+    }, KUDOS_INTERVAL);
   }
 }
 
