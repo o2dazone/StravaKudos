@@ -25,7 +25,6 @@ function init() {
 
 // give all the kudos
 function giveKudos() {
-  btn.removeEventListener('click', giveKudos);
   setTimeout(() => {
     const kudoBtn = d.querySelector(els);
     if(kudoBtn) {
