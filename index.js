@@ -3,6 +3,7 @@
     , KUDOS_INTERVAL = 1000 // in milliseconds
     , KUDOS_LOCKOUT = 100 // https://github.com/o2dazone/StravaKudos/issues/13#issuecomment-356319221
     , btn
+    , viewingAthleteId
     , els = '[data-testid=\'unfilled_kudos\']';
 
   const init =() => {
@@ -53,12 +54,18 @@
     document.body.prepend(btn);
     updateCountNum();
   };
+  /* eslint-disable-next-line */
+  const mockFillKudo = btn => {
+    btn.setAttribute('fill','#FC5200');
+    btn.dataset.testid = 'filled_kudos';
+  };
 
   // give ALL the kudos
   const giveKudos = () => {
     setTimeout(() => {
-      const kudoBtn = document.querySelector(els);
+      const kudoBtn = getEligibleKudoButtons()?.[0];
       if(kudoBtn) {
+        // mockFillKudo(kudoBtn); /* for testing purposes only */
         kudoBtn.parentNode.click();
         giveKudos();
       }
@@ -81,13 +88,31 @@
     }
   };
 
+  const getEligibleKudoButtons = () => {
+    const activityAvatars = document.querySelectorAll('[data-testid="owner-avatar"]');
+    const buttons = [];
+
+    activityAvatars.forEach(avatar => {
+      // activity card is not your own
+      if (!avatar.href.includes(viewingAthleteId)) {
+        const activityCard = avatar.closest('[class*="--child-entry"]') /* group activity */ ||
+                             avatar.closest('[data-testid="web-feed-entry"]') /* solo activity */;
+
+        activityCard.querySelector(els) && buttons.push(activityCard.querySelector(els));
+      }
+    });
+
+    return buttons;
+  };
+
   // publish number of kudos
   const updateCountNum = () => {
     const count = document.getElementById('skCount');
+    viewingAthleteId = document.querySelector('.user-menu > a')?.href?.match(/\d+/)?.[0]; // store viewing athlete id
 
     if (count) {
       setInterval(() => {
-        kudosBtns = document.querySelectorAll(els);
+        kudosBtns = getEligibleKudoButtons();
         count.innerHTML = kudosBtns.length;
         toggleKudosBox();
       }, KUDOS_INTERVAL);

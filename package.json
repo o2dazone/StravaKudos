@@ -3,7 +3,8 @@
   "verson": "0.0.3",
   "scripts": {
     "minify": "minify ./index.js > ./chrome-extension/index.js",
-    "build": "npm run minify; cd ./chrome-extension && zip -j StravaKudos.zip index.js icon.png manifest.json"
+    "bundle": "cd ./chrome-extension && zip -j StravaKudos.zip index.js icon.png manifest.json",
+    "build": "npm run minify; npm run bundle"
   },
   "devDependencies": {
     "eslint": "^7.32.0",

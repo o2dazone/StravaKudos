@@ -6,3 +6,4 @@ You can download the extension from the [Chrome Web Store](https://chrome.google
 
 # Building
 `cd StravaKudos; npm i && npm run build`
+* Note: If your environment does not already have `zip`, you may need to install it via `apt-get`, `brew` or whatever else you use.
